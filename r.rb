@@ -4,20 +4,17 @@ require "rexml/document"
 require "fileutils"
 include REXML
 
-
 INKSCAPE = '/usr/bin/inkscape'
-#INKSCAPE = '/usr/bin/inkscape' # like this works for me, while using `which` inkscape hangs
 SRC = "src/gnome-stencils.svg"
 PREFIX = "gnome/scalable"
 
 def chopSVG(icon)
 	FileUtils.mkdir_p(icon[:dir]) unless File.exists?(icon[:dir])
 	unless (File.exists?(icon[:file]) && !icon[:forcerender])
-		FileUtils.cp(SRC,icon[:file]) 
+		#FileUtils.cp(SRC,icon[:file]) 
 		puts " >> #{icon[:name]}"
-		cmd = "#{INKSCAPE} -f #{icon[:file]} --select #{icon[:id]} --verb=FitCanvasToSelection  --verb=EditInvertInAllLayers "
-		cmd += "--verb=EditDelete --verb=EditSelectAll --verb=SelectionUnGroup --verb=SelectionUnGroup --verb=SelectionUnGroup --verb=StrokeToPath --verb=FileVacuum "
-		cmd += "--verb=FileSave --verb=FileClose > /dev/null 2>&1"
+		cmd = "#{INKSCAPE} -l #{icon[:file]} -i #{icon[:id]} -j #{SRC}"
+		puts "DEBUG #{cmd}"
 		system(cmd)
 		#saving as plain SVG gets rid of the classes :/
 		#cmd = "#{INKSCAPE} -f #{icon[:file]} -z --vacuum-defs -l #{icon[:file]} > /dev/null 2>&1"
