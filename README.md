@@ -1,9 +1,12 @@
 # Gnome Icon Theme Flat
 
-This is a fork of [GNOME Symbolic Icons](https://github.com/GNOME/gnome-icon-theme-symbolic).
+This is a fork of [GNOME Symbolic Icons](https://github.com/GNOME/gnome-icon-theme-symbolic).  
 The original icons look flat, nice, and clean – but they are only used "for specific purposes".
 
 This fork uses these icons globally.
+
+# Icon Set
+![icon overview](https://i.imgur.com/oxh9Hb6.png)
 
 # Original authors
 
